@@ -25,8 +25,6 @@ The following parameters are used to setup Stable Diffusion:
 
 ## Demo
 
-The demo can be accessed at https://virtuavisage.onrender.com/.
-
 You can log into the application using the following credentials:
 
 **Email**: jackson@domain.com  

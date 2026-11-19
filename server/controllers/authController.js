@@ -5,6 +5,15 @@ const { clientUrl } = require('../constants/index');
 const AppError = require('../utils/AppError');
 const User = require('../models/User');
 
+const getClientOrigin = (req) => {
+  if (process.env.CLIENT_URL) return process.env.CLIENT_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (req && req.get('host') && !req.get('host').includes('localhost:8080')) {
+    return `${req.protocol}://${req.get('host')}`;
+  }
+  return clientUrl;
+};
+
 exports.signup = catchAsync(async (req, res, next) => {
   const filteredBody = filterObject(
     req.body,
@@ -56,7 +65,8 @@ exports.authenticateLocal = (req, res, next) => {
 
 exports.authenticateGoogle = (req, res, next) => {
   passport.authenticate('google', function (err, user, info) {
-    const authErrorUrl = `${clientUrl}/oauth/post/?status=failure`;
+    const targetOrigin = getClientOrigin(req);
+    const authErrorUrl = `${targetOrigin}/oauth/post/?status=failure`;
     if (err) {
       return res.redirect(authErrorUrl);
     }
@@ -64,7 +74,7 @@ exports.authenticateGoogle = (req, res, next) => {
       if (err) {
         return res.redirect(authErrorUrl);
       }
-      return res.redirect(`${clientUrl}/oauth/post/?status=success`);
+      return res.redirect(`${targetOrigin}/oauth/post/?status=success`);
     });
   })(req, res, next);
 };

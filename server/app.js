@@ -7,33 +7,10 @@ const express = require('express');
 const app = express();
 
 app.enable('trust proxy');
-const { clientUrl } = require('./constants');
 require('./middleware/auth');
 
-const allowedOrigins = [
-  clientUrl,
-  'http://localhost:5173',
-  'http://localhost:3000',
-  process.env.CLIENT_URL,
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
-].filter(Boolean);
-
-const corsOptions = {
-  credentials: true,
-  origin: (origin, callback) => {
-    if (
-      !origin ||
-      allowedOrigins.includes(origin) ||
-      process.env.NODE_ENV !== 'production'
-    ) {
-      return callback(null, true);
-    }
-    return callback(null, true);
-  }
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors({ credentials: true, origin: true }));
+app.options('*', cors({ credentials: true, origin: true }));
 app.use(express.json({ limit: '50mb' }));
 app.use(
   session({

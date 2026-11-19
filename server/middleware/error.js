@@ -1,5 +1,4 @@
 const AppError = require('../utils/AppError');
-const { apiUrl } = require('../constants');
 
 const getCastError = (err) => {
   const message = `Invalid value "${err.value}" for the path "${err.path}".`;

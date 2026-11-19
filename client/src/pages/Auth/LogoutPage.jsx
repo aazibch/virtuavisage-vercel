@@ -15,7 +15,7 @@ const LogoutPage = () => {
     const logout = async () => {
       await sendRequest(
         {
-          url: `${apiUrl}/v1/users/auth/logout`,
+          url: `${apiUrl}/api/v1/users/auth/logout`,
           method: 'GET',
           withCredentials: true,
           credentials: 'include',

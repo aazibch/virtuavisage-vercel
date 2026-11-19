@@ -7,7 +7,7 @@ const thunkArtifactsActions = {
   fetchPublicArtifacts: () => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/public`,
+        `${apiUrl}/api/v1/artifacts/public`,
         'GET'
       );
 

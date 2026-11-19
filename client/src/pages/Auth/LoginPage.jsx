@@ -6,7 +6,7 @@ import { apiUrl } from '../../constants';
 const LoginPage = () => {
   const handleGoogleLogin = () => {
     window.open(
-      `${apiUrl}/v1/users/auth/google`,
+      `${apiUrl}/api/v1/users/auth/google`,
       'popup',
       'height=700, width=600'
     );

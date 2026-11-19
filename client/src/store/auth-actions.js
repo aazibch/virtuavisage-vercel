@@ -8,7 +8,7 @@ const thunkAuthActions = {
   login: (values, callback) => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/users/auth/login`,
+        `${apiUrl}/api/v1/users/auth/login`,
         'POST',
         true,
         values
@@ -27,7 +27,7 @@ const thunkAuthActions = {
   signup: (values, callback) => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/users/auth/signup`,
+        `${apiUrl}/api/v1/users/auth/signup`,
         'POST',
         true,
         values
@@ -46,7 +46,7 @@ const thunkAuthActions = {
   fetchUser: () => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/users/me`,
+        `${apiUrl}/api/v1/users/me`,
         'GET',
         true
       );
@@ -65,7 +65,7 @@ const thunkAuthActions = {
   fetchCollectedArtifacts: () => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/collection`,
+        `${apiUrl}/api/v1/artifacts/collection`,
         'GET',
         true
       );
@@ -82,7 +82,7 @@ const thunkAuthActions = {
       const state = getState();
 
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/public`,
+        `${apiUrl}/api/v1/artifacts/public`,
         'POST',
         true,
         {
@@ -110,7 +110,7 @@ const thunkAuthActions = {
       const state = getState();
 
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/public/${id}`,
+        `${apiUrl}/api/v1/artifacts/public/${id}`,
         'DELETE',
         true
       );
@@ -146,7 +146,7 @@ const thunkAuthActions = {
       const state = getState();
 
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/collection/${id}`,
+        `${apiUrl}/api/v1/artifacts/collection/${id}`,
         'DELETE',
         true
       );
@@ -184,7 +184,7 @@ const thunkAuthActions = {
   generateArtifact: (values) => {
     return async (dispatch) => {
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts`,
+        `${apiUrl}/api/v1/artifacts`,
         'POST',
         true,
         values
@@ -207,7 +207,7 @@ const thunkAuthActions = {
       const state = getState();
 
       const requestConfig = generateHttpConfig(
-        `${apiUrl}/v1/artifacts/collection`,
+        `${apiUrl}/api/v1/artifacts/collection`,
         'POST',
         true,
         {

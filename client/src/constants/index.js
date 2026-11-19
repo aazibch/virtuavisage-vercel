@@ -47,10 +47,14 @@ export const surpriseMePrompts = [
   'A Space Shuttle flying above Cape Town, digital art'
 ];
 
-let apiUrl = 'http://localhost:8080';
+let apiUrl = '';
 
-if (process.env.NODE_ENV === 'production') {
-  apiUrl = 'https://virtuavisage-api.onrender.com';
+if (
+  typeof import.meta !== 'undefined' &&
+  import.meta.env &&
+  import.meta.env.VITE_API_URL !== undefined
+) {
+  apiUrl = import.meta.env.VITE_API_URL;
 }
 
 export { apiUrl };

@@ -4,9 +4,12 @@ const app = require('./app');
 
 mongoose
   .connect(process.env.MONGODB_URL)
-  .then(() => console.log('Connected to the database.'));
+  .then(() => console.log('Connected to the database.'))
+  .catch((err) => console.error('Database connection error:', err));
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server running on port ${port}.`);
 });
+
+module.exports = app;

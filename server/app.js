@@ -29,13 +29,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/api/v1/status', (req, res) => {
-  res.status(200).json({ status: 'success' });
-});
-app.get('/v1/status', (req, res) => {
-  res.status(200).json({ status: 'success' });
-});
-
 const usersRoutes = require('./routes/usersRoutes');
 const artifactsRoutes = require('./routes/artifactsRoutes');
 const globalErrorHandler = require('./middleware/error');

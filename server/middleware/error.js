@@ -54,8 +54,7 @@ module.exports = (err, req, res, next) => {
   if (err.name === 'CastError') err = getCastError(err);
   if (err.code === 11000) {
     if (
-      (originalUrl === '/v1/users/auth/signup' ||
-        originalUrl === '/api/v1/users/auth/signup') &&
+      originalUrl === '/api/v1/users/auth/signup' &&
       Object.keys(err.keyPattern)[0] === 'email'
     ) {
       err = getDublicateFieldErrorForEmail(err);
